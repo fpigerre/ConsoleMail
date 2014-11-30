@@ -1,4 +1,4 @@
-![Mail Icon](http://i.imgur.com/CcTUk6D.png) ConsoleMail
+<img src="http://i.imgur.com/CcTUk6D.png" height="35" width="35"> ConsoleMail
 ===========
 
 Send e-mail from your console!
