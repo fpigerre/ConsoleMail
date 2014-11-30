@@ -9,20 +9,33 @@ namespace ConsoleApplication1
 {
     class Program
     {
-        private static string emailAddress = "";
-        private static string emailPassword = "";
+        private static string emailAddress = Environment.GetEnvironmentVariable("sendemailfrom");
+        private static string emailPassword = Environment.GetEnvironmentVariable("sendemailpassword");
 
         static void Main(string[] args)
         {
             // Get email information from console input
-            Console.WriteLine("Recipient:");
-            string recipient = Console.ReadLine();
+            string recipient = getRecipient();
             Console.WriteLine("Subject:");
             string subject = Console.ReadLine();
             Console.WriteLine("Body:");
             string body = Console.ReadLine();
 
             mail(recipient, subject, body);
+        }
+
+        static string getRecipient()
+        {
+            Console.WriteLine("Recipient:");
+            string recipient = Console.ReadLine();
+
+            /* Ensure that the recipient string contains an '@' symbol
+               Othweise, continue looping through the method */
+            if (!recipient.Contains("@"))
+            {
+                getRecipient();
+            }
+            return recipient;
         }
 
         static void mail(string recipient, string subject, string body)
